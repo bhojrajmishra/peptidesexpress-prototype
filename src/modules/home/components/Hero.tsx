@@ -11,8 +11,8 @@ function Star() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-light">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-12 pt-16 md:grid-cols-2 md:items-center">
-        <div className="pb-8 md:py-0">
+      <div className="mx-auto grid max-w-6xl px-4 pt-16 md:grid-cols-2 md:items-stretch">
+        <div className="flex flex-col justify-center pb-10 md:py-16 md:pr-8">
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -39,12 +39,17 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/hero-vials-2.jpg"
-          alt="Defcon Peptides research vials"
-          className="mx-auto w-full max-w-md rounded-2xl shadow-2xl shadow-black/20"
-        />
+        {/* Panel shares the photo's own near-black backdrop, so there's no
+            visible seam between the two, and it runs flush to the bottom of
+            the section so the photo touches the announcement bar below. */}
+        <div className="flex items-end justify-center bg-black">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero-vials-2.jpg"
+            alt="Defcon Peptides research vials"
+            className="w-full max-w-md"
+          />
+        </div>
       </div>
     </section>
   );
