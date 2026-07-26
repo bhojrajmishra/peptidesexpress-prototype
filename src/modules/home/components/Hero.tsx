@@ -11,7 +11,7 @@ function Star() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-light">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-20 md:grid-cols-2 md:items-center">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-16 md:grid-cols-2 md:items-center">
         <div className="pb-8 md:py-0">
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
@@ -22,7 +22,7 @@ export function Hero() {
             <span className="text-sm font-medium text-muted">Trusted by 10,000+ Researchers</span>
           </div>
 
-          <h1 className="mt-5 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-brand-dark sm:text-5xl lg:text-6xl">
+          <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-brand-dark sm:text-5xl lg:text-6xl">
             Peptides, done
             <span className="block">right.</span>
           </h1>

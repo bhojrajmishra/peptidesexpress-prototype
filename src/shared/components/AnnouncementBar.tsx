@@ -34,7 +34,7 @@ export function AnnouncementBar() {
 
   return (
     <div className="overflow-hidden bg-brand py-2.5">
-      <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-marquee">
         {track}
         {track}
       </div>
