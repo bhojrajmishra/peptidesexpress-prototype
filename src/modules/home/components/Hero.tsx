@@ -44,7 +44,7 @@ export function Hero() {
         <div className="flex items-end justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hero-vials-2.jpg"
+            src="/hero-vials-3.png"
             alt="Defcon Peptides research vials"
             className="w-full max-w-md"
           />
