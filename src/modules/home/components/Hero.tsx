@@ -43,7 +43,7 @@ export function Hero() {
         <img
           src="/hero-vials-2.jpg"
           alt="Defcon Peptides research vials"
-          className="mx-auto w-full max-w-md"
+          className="mx-auto w-full max-w-md rounded-2xl shadow-2xl shadow-black/20"
         />
       </div>
     </section>
