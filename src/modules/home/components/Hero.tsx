@@ -39,12 +39,16 @@ export function Hero() {
           </Link>
         </div>
 
-        <div className="flex items-end justify-center">
+        <div className="flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hero-vials.png"
+            src="/hero-vials-2.jpg"
             alt="Defcon Peptides research vials"
-            className="w-full max-w-sm object-contain object-bottom"
+            className="w-full max-w-md object-contain"
+            style={{
+              maskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
+            }}
           />
         </div>
       </div>
