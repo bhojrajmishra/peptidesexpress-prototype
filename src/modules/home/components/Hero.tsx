@@ -39,10 +39,9 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* Panel shares the photo's own near-black backdrop, so there's no
-            visible seam between the two, and it runs flush to the bottom of
-            the section so the photo touches the announcement bar below. */}
-        <div className="flex items-end justify-center bg-black">
+        {/* Bottom-anchored and flush to the section edge, so the photo
+            touches the announcement bar below with no gap. */}
+        <div className="flex items-end justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/hero-vials-2.jpg"
