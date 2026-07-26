@@ -11,7 +11,7 @@ function Star() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-light">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-16 md:grid-cols-2 md:items-center">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-12 pt-16 md:grid-cols-2 md:items-center">
         <div className="pb-8 md:py-0">
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
@@ -39,18 +39,12 @@ export function Hero() {
           </Link>
         </div>
 
-        <div className="flex items-center justify-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/hero-vials-2.jpg"
-            alt="Defcon Peptides research vials"
-            className="w-full max-w-md object-contain"
-            style={{
-              maskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
-            }}
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-vials-2.jpg"
+          alt="Defcon Peptides research vials"
+          className="mx-auto w-full max-w-md"
+        />
       </div>
     </section>
   );
