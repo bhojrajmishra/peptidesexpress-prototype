@@ -14,7 +14,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
 
   return (
     <section className="py-16">
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-4 pl-4 pr-4 sm:pl-6">
+      <div className="mx-auto mb-8 flex max-w-7xl flex-wrap items-end justify-between gap-4 px-4">
         <div>
           <h2 className="font-display text-4xl font-extrabold text-ink">Top Picks</h2>
           <p className="mt-2 text-sm text-muted">Best Sellers · Our most trusted research peptides</p>
@@ -50,7 +50,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
 
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto pb-4 pl-4 [scrollbar-width:none] sm:pl-6 [&::-webkit-scrollbar]:hidden"
+        className="flex gap-6 overflow-x-auto pb-4 pl-[max(1rem,calc((100vw-1280px)/2+1rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {products.map((p, i) => (
           <div key={p.id} className="w-64 shrink-0 sm:w-72">
