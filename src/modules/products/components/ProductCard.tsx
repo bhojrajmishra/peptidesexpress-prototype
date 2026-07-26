@@ -36,7 +36,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
   return (
     <div
-      className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow duration-500 animate-fade-in-up hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow duration-500 animate-fade-in-up hover:shadow-lg"
       style={{ animationDelay: `${Math.min(index, 10) * 60}ms` }}
     >
       <Link href={`/products/${product.slug}`} className="relative block">
@@ -72,32 +72,34 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
         {product.subtitle && <p className="mt-1 text-xs italic text-muted sm:text-sm">{product.subtitle}</p>}
 
-        <div className="mt-3 flex items-center gap-2">
-          {product.badge && (
-            <span className="rounded bg-brand-light px-2 py-1 text-xs font-medium text-brand">{product.badge}</span>
-          )}
-          <StockBadge status={product.stock_status} />
-        </div>
-
-        {product.variants.length > 0 && (
-          <div className="mt-4">
-            <label className="text-sm font-semibold text-ink">Variant</label>
-            <select
-              value={variantIdx}
-              onChange={(e) => setVariantIdx(Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm outline-none focus:border-brand"
-            >
-              {product.variants.map((v, i) => (
-                <option key={i} value={i}>{v.label}</option>
-              ))}
-            </select>
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            {product.badge && (
+              <span className="rounded bg-brand-light px-2 py-1 text-xs font-medium text-brand">{product.badge}</span>
+            )}
+            <StockBadge status={product.stock_status} />
           </div>
-        )}
+
+          {product.variants.length > 0 && (
+            <label className="flex items-center gap-1.5 text-xs font-semibold text-ink">
+              Size
+              <select
+                value={variantIdx}
+                onChange={(e) => setVariantIdx(Number(e.target.value))}
+                className="rounded-lg border border-gray-200 px-2 py-1 text-xs font-normal text-ink outline-none focus:border-brand"
+              >
+                {product.variants.map((v, i) => (
+                  <option key={i} value={i}>{v.label}</option>
+                ))}
+              </select>
+            </label>
+          )}
+        </div>
 
         <button
           onClick={handleAddToCart}
           disabled={disabled}
-          className={`mt-4 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition ${
+          className={`mt-auto flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition ${
             added
               ? "bg-green-600 text-white"
               : disabled
