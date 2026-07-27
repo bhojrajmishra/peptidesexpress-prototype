@@ -11,7 +11,7 @@ function Star() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-brand-light">
-      <div className="mx-auto grid max-w-6xl px-4 pt-20 md:grid-cols-2 md:items-stretch">
+      <div className="mx-auto grid max-w-6xl px-4 pt-[76px] md:grid-cols-2 md:items-stretch">
         <div className="flex flex-col justify-center pb-10 md:py-16 md:pr-8">
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
