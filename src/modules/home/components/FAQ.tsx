@@ -2,11 +2,27 @@
 import { useState } from "react";
 import { STATIC_FAQS, FAQ_CATEGORIES } from "../data/static-faqs";
 
+const TRANSITION_MS = 200;
+
 export function FAQ() {
   const [category, setCategory] = useState("All Questions");
+  const [displayCategory, setDisplayCategory] = useState("All Questions");
+  const [isSwitching, setIsSwitching] = useState(false);
   const [open, setOpen] = useState<number | null>(null);
 
-  const faqs = category === "All Questions" ? STATIC_FAQS : STATIC_FAQS.filter((f) => f.category === category);
+  const faqs =
+    displayCategory === "All Questions" ? STATIC_FAQS : STATIC_FAQS.filter((f) => f.category === displayCategory);
+
+  function selectCategory(cat: string) {
+    if (cat === category) return;
+    setCategory(cat);
+    setIsSwitching(true);
+    setOpen(null);
+    setTimeout(() => {
+      setDisplayCategory(cat);
+      setIsSwitching(false);
+    }, TRANSITION_MS);
+  }
 
   return (
     <section id="faqs" className="bg-gray-50 py-16">
@@ -15,7 +31,7 @@ export function FAQ() {
 
         <div className="mb-8 flex flex-wrap gap-3">
           <button
-            onClick={() => setCategory("All Questions")}
+            onClick={() => selectCategory("All Questions")}
             className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
               category === "All Questions" ? "bg-brand text-white" : "border border-gray-300 text-ink hover:border-brand"
             }`}
@@ -25,7 +41,7 @@ export function FAQ() {
           {FAQ_CATEGORIES.map((cat) => (
             <button
               key={cat}
-              onClick={() => setCategory(cat)}
+              onClick={() => selectCategory(cat)}
               className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
                 category === cat ? "bg-brand text-white" : "border border-gray-300 text-ink hover:border-brand"
               }`}
@@ -35,7 +51,10 @@ export function FAQ() {
           ))}
         </div>
 
-        <div className="space-y-4">
+        <div
+          key={displayCategory}
+          className={`space-y-4 transition-opacity duration-200 ${isSwitching ? "opacity-0" : "animate-fade-in-up opacity-100"}`}
+        >
           {faqs.map((f) => {
             const isOpen = open === f.id;
             return (
