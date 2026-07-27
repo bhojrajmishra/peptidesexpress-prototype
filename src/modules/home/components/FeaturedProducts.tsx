@@ -20,7 +20,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
           <p className="mt-2 text-sm text-muted">Best Sellers · Our most trusted research peptides</p>
           <a
             href="/products"
-            className="mt-5 inline-flex items-center rounded-full border border-ink px-6 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-ink transition hover:bg-ink hover:text-white"
+            className="mt-5 inline-flex items-center rounded-full border border-brand px-6 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-brand transition hover:bg-brand hover:text-white"
           >
             View All
           </a>
@@ -30,7 +30,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
           <button
             aria-label="Scroll left"
             onClick={() => scroll("left")}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-ink transition hover:border-ink"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-ink transition hover:border-brand hover:text-brand"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -39,7 +39,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
           <button
             aria-label="Scroll right"
             onClick={() => scroll("right")}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-ink transition hover:border-ink"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-ink transition hover:border-brand hover:text-brand"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
