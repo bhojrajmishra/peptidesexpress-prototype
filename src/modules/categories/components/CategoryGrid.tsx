@@ -22,7 +22,7 @@ export function CategoryGrid({ categories, products }: { categories: Category[];
         <button
           onClick={() => setSelected("all")}
           className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
-            selected === "all" ? "bg-brand text-white" : "bg-brand-light text-brand-dark hover:bg-brand hover:text-white"
+            selected === "all" ? "bg-brand text-white" : "border border-gray-300 text-ink hover:border-brand"
           }`}
         >
           See All
@@ -32,7 +32,7 @@ export function CategoryGrid({ categories, products }: { categories: Category[];
             key={c.id}
             onClick={() => setSelected(c.slug)}
             className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
-              selected === c.slug ? "bg-brand text-white" : "bg-brand-light text-brand-dark hover:bg-brand hover:text-white"
+              selected === c.slug ? "bg-brand text-white" : "border border-gray-300 text-ink hover:border-brand"
             }`}
           >
             <TagIcon className="h-4 w-4" />
