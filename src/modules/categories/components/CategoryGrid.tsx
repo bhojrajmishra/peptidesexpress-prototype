@@ -18,7 +18,7 @@ export function CategoryGrid({ categories, products }: { categories: Category[];
         Explore by Category
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-wrap gap-3">
         <button
           onClick={() => setSelected("all")}
           className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
