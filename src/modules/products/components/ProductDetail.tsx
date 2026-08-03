@@ -454,18 +454,8 @@ export function ProductDetail({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* ── Research Use Only disclaimer ── */}
-      <div className="mt-12 rounded-2xl border border-brand/30 bg-brand-light p-6">
-        <h3 className="font-display text-sm font-bold uppercase tracking-wide text-brand">
-          Research Use Only
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          All compounds offered are of premium quality and are intended strictly for in vitro laboratory
-          research purposes only. These products are not intended for human or animal consumption and are
-          not approved for clinical, medical or diagnostic applications. Purchasers are solely responsible
-          for ensuring compliance with all applicable laws in their jurisdiction.
-        </p>
-      </div>
+      {/* The Research Use Only disclaimer lives in the Footer, which renders on
+          every page — repeating it here showed the same panel twice in a row. */}
     </div>
   );
 }
