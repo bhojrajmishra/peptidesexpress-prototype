@@ -35,17 +35,36 @@ function CheckIcon() {
   );
 }
 
+// Gallery arrows: always visible on touch, where there is no hover to reveal them.
+const ARROW =
+  "absolute top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full " +
+  "bg-white/90 text-ink shadow-md ring-1 ring-black/5 backdrop-blur transition " +
+  "hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand";
+
+function ChevronIcon({ dir }: { dir: "left" | "right" }) {
+  return (
+    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d={dir === "left" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
+      />
+    </svg>
+  );
+}
+
 export function ProductDetail({ product }: { product: Product }) {
   const [variantIdx, setVariantIdx] = useState(0);
   const [bundleIdx, setBundleIdx] = useState(1); // "Buy Two" selected by default
-  const [mainImage, setMainImage] = useState(product.variants[0]?.image_url || product.image_url);
+  const [imageIdx, setImageIdx] = useState(0);
   const [added, setAdded] = useState(false);
   const { addItem } = useCart();
   const router = useRouter();
 
   function selectVariant(i: number) {
     setVariantIdx(i);
-    setMainImage(product.variants[i]?.image_url || product.image_url);
+    setImageIdx(i);
   }
 
   function handleAddToCart() {
@@ -80,10 +99,21 @@ export function ProductDetail({ product }: { product: Product }) {
   const priceTotal = +(priceEa * bundle.qty).toFixed(2);
   const originalTotal = +(basePrice * bundle.qty).toFixed(2);
 
-  // thumbnails: use each variant's own image when set, falling back to the main product image
-  const thumbnails = product.variants.length > 1
+  // thumbnails: one per variant's own image when set, falling back to the main product image
+  const thumbnails = product.variants.length > 0
     ? product.variants.map((v) => v.image_url || product.image_url)
-    : [product.image_url, product.image_url];
+    : [product.image_url];
+
+  const mainImage = thumbnails[imageIdx] ?? product.image_url;
+
+  // Arrow navigation wraps around. Where an image belongs to a selectable
+  // variant we move the size selection with it, so the price on the right can
+  // never disagree with the vial being shown.
+  function stepImage(delta: number) {
+    const next = (imageIdx + delta + thumbnails.length) % thumbnails.length;
+    setImageIdx(next);
+    if (next < product.variants.length) setVariantIdx(next);
+  }
 
   return (
     <div>
@@ -102,29 +132,59 @@ export function ProductDetail({ product }: { product: Product }) {
       <div className="mt-4 grid gap-10 lg:grid-cols-2">
         {/* Image gallery */}
         <div>
-          <div className="flex items-center justify-center rounded-2xl bg-gray-50 p-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={mainImage}
-              alt={product.name}
-              className="h-80 w-full object-contain"
-            />
+          <div className="group relative overflow-hidden rounded-3xl bg-gray-50">
+            {/* The image fills the frame so the parent's overflow-hidden clips it
+                to the rounded corners — with object-contain it sits letterboxed
+                inside the box instead and the corners still read as square. */}
+            <div className="aspect-[4/5] w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mainImage}
+                alt={product.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {thumbnails.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => stepImage(-1)}
+                  aria-label="Previous image"
+                  className={ARROW + " left-3"}
+                >
+                  <ChevronIcon dir="left" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => stepImage(1)}
+                  aria-label="Next image"
+                  className={ARROW + " right-3"}
+                >
+                  <ChevronIcon dir="right" />
+                </button>
+              </>
+            )}
           </div>
+
           {/* Thumbnails */}
-          <div className="mt-4 flex gap-3">
-            {thumbnails.slice(0, 4).map((src, i) => (
-              <button
-                key={i}
-                onClick={() => setMainImage(src)}
-                className={`rounded-xl border-2 p-2 transition ${
-                  mainImage === src ? "border-brand" : "border-gray-200 hover:border-gray-300"
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="h-16 w-16 object-contain" />
-              </button>
-            ))}
-          </div>
+          {thumbnails.length > 1 && (
+            <div className="mt-4 flex gap-3">
+              {thumbnails.slice(0, 4).map((src, i) => (
+                <button
+                  key={i}
+                  onClick={() => selectVariant(i)}
+                  aria-label={`Show image ${i + 1}`}
+                  className={`rounded-xl border-2 p-2 transition ${
+                    imageIdx === i ? "border-brand" : "border-gray-200 hover:border-gray-300"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt="" className="h-16 w-16 rounded-lg object-contain" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Purchase panel */}

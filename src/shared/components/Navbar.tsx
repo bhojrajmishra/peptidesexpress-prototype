@@ -38,7 +38,7 @@ export function Navbar() {
     <Fragment>
       <header className="fixed left-1/2 top-4 z-40 w-[95%] max-w-5xl -translate-x-1/2">
         <nav
-          className={`border border-white/40 bg-white/70 px-6 py-3 shadow-lg shadow-black/5 backdrop-blur-md transition-[border-radius] duration-300 ease-out ${
+          className={`border border-white/40 bg-white/70 px-6 py-3 shadow-lg shadow-black/5 backdrop-blur-md transition-[border-radius] duration-150 ease-out ${
             mobileOpen ? "rounded-3xl" : "rounded-full"
           }`}
         >
@@ -83,11 +83,15 @@ export function Navbar() {
           </div>
 
           <div
-            className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+            className={`grid transition-[grid-template-rows] duration-150 ease-out motion-reduce:transition-none md:hidden ${
               mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
             }`}
           >
-            <div className="overflow-hidden">
+            <div
+              className={`overflow-hidden transition-opacity duration-150 ease-out motion-reduce:transition-none ${
+                mobileOpen ? "opacity-100" : "opacity-0"
+              }`}
+            >
               <ul className="mt-4 flex flex-col gap-1 border-t border-black/5 pt-4 text-sm font-medium text-ink">
                 {NAV.map((item) => (
                   <li key={item.href}>
