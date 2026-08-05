@@ -72,7 +72,10 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
         {product.subtitle && <p className="mt-1 text-xs italic text-muted sm:text-sm">{product.subtitle}</p>}
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+        {/* mt-auto pins this row to the bottom of the card, so the stock badge
+            and size control line up across a row of cards whose titles and
+            subtitles run to different numbers of lines. */}
+        <div className="mt-auto flex min-h-[2rem] flex-wrap items-center justify-between gap-2 pt-3">
           <div className="flex items-center gap-2">
             {product.badge && (
               <span className="rounded bg-brand-light px-2 py-1 text-xs font-medium text-brand">{product.badge}</span>
@@ -99,7 +102,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         <button
           onClick={handleAddToCart}
           disabled={disabled}
-          className={`mt-auto flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition ${
+          className={`mt-3 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition ${
             added
               ? "bg-green-600 text-white"
               : disabled
