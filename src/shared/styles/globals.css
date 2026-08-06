@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Research-use gate. The inline script in the root layout stamps .rc-ok on
+   <html> before first paint once a visitor has confirmed. Until then the gate
+   covers the viewport and the page beneath it cannot be scrolled, so a
+   first-time visitor sees the gate rather than the site. Plain CSS rather than
+   a React effect, because this has to be settled before anything paints. */
+html:not(.rc-ok) body {
+  overflow: hidden;
+}
+
+html.rc-ok .research-gate {
+  display: none !important;
+}
+
 @layer utilities {
   @keyframes marquee {
     from {

@@ -5,35 +5,30 @@ import Image from "next/image";
 // Persisted rather than session-scoped: a returning visitor has already made
 // this declaration, so re-asking on every visit is noise rather than diligence.
 const STORAGE_KEY = "research_use_confirmed";
+// Set on <html> by the inline script in the root layout, before anything
+// paints. CSS keys off it to hide this screen for a returning visitor, so
+// neither party sees a flash of the other's view.
+const READY_CLASS = "rc-ok";
 
 export function AgeVerificationGate() {
-  // Start hidden and decide on mount — reading localStorage during render
-  // would mismatch the server-rendered HTML and flash the gate for everyone.
-  const [visible, setVisible] = useState(false);
+  // Rendered by default, on the server too, so the very first paint is this
+  // screen and never the site behind it. The inline script has already hidden
+  // it via CSS for anyone who previously confirmed.
+  const [dismissed, setDismissed] = useState(false);
   const [isAdult, setIsAdult] = useState(false);
   const [isResearcher, setIsResearcher] = useState(false);
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
+      // Already confirmed: drop it from the DOM. CSS hid it before paint, so
+      // this is cleanup rather than a visible change.
+      if (localStorage.getItem(STORAGE_KEY)) setDismissed(true);
     } catch {
-      // Private mode with storage disabled — show the gate rather than skip it.
-      setVisible(true);
+      // Private mode with storage disabled — keep the gate up rather than skip it.
     }
   }, []);
 
-  // Hold the page still while the gate is up, so the content behind it can't
-  // be scrolled or read past the overlay.
-  useEffect(() => {
-    if (!visible) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [visible]);
-
-  if (!visible) return null;
+  if (dismissed) return null;
 
   const bothConfirmed = isAdult && isResearcher;
 
@@ -44,7 +39,10 @@ export function AgeVerificationGate() {
     } catch {
       // Storage unavailable — let them through for this visit regardless.
     }
-    setVisible(false);
+    // Adding the class both hides this screen and releases the scroll lock,
+    // which are the two things the stylesheet keys off.
+    document.documentElement.classList.add(READY_CLASS);
+    setDismissed(true);
   }
 
   return (
@@ -52,9 +50,9 @@ export function AgeVerificationGate() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="age-gate-heading"
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-ink/40 p-4 backdrop-blur-sm"
+      className="research-gate fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-background p-4"
     >
-      <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl shadow-black/20 sm:p-10">
+      <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-xl shadow-black/5 sm:p-10">
         <div className="flex justify-center">
           <Image src="/logo-icon.png" alt="Defcon Peptides" width={56} height={56} className="h-12 w-12" priority />
         </div>
