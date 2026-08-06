@@ -14,6 +14,7 @@ const NAV_LINKS = [
 const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Refund Policy", href: "/refund-policy" },
   { label: "Disclaimer", href: "/disclaimer" },
   { label: "Legal & Compliance", href: "/legal-compliance" },
 ];
@@ -44,7 +45,7 @@ export function Footer() {
           <div>
             <h4 className="font-display text-base font-bold text-ink">Unlock 10% Off Your Order</h4>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Join the Peptides Express research community for 10% off your order, early access,
+              Join the Defcon Peptides research community for 10% off your order, early access,
               exclusive offers &amp; updates.
             </p>
             <div className="mt-4">
@@ -113,7 +114,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-gray-200 pt-6 text-center text-sm text-muted">
-          © 2026 Peptides Express. All rights reserved.
+          © 2026 Defcon Peptides. All rights reserved.
         </div>
       </div>
     </footer>
