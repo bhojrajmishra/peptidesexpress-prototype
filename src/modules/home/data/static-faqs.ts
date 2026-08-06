@@ -30,7 +30,7 @@ export const STATIC_FAQS: StaticFaq[] = [
     category: "Ordering",
     question: "Can I modify or cancel my order?",
     answer:
-      "Orders can be modified or canceled within 1 hour of placement. If you would like to modify or cancel your order, please email us at support@peptidesexpress.com.au. After this window, orders enter processing and cannot be changed.",
+      "Orders can be modified or canceled within 1 hour of placement. If you would like to modify or cancel your order, please email us at Support@defconpeptides.com.au. After this window, orders enter processing and cannot be changed.",
   },
   {
     id: 4,

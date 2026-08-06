@@ -144,7 +144,7 @@ const SECTIONS: LegalSection[] = [
         type: "paragraph",
         text: "If you have questions about this Privacy Policy or our privacy practices, please contact us:",
       },
-      { type: "paragraph", text: "Defcon Peptides — Email: support@peptidesexpress.com.au" },
+      { type: "paragraph", text: "Defcon Peptides — Email: Support@defconpeptides.com.au" },
     ],
   },
 ];

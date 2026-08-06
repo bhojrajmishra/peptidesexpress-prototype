@@ -124,7 +124,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Contact",
     blocks: [
       { type: "paragraph", text: "If you have questions about this disclaimer, please contact us:" },
-      { type: "paragraph", text: "Defcon Peptides — Email: support@peptidesexpress.com.au" },
+      { type: "paragraph", text: "Defcon Peptides — Email: Support@defconpeptides.com.au" },
     ],
   },
 ];

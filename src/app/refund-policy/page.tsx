@@ -49,7 +49,7 @@ const SECTIONS: LegalSection[] = [
       },
       {
         type: "paragraph",
-        text: "To lodge a claim, please email: support@defconpeptides.com.au",
+        text: "To lodge a claim, please email: Support@defconpeptides.com.au",
       },
       { type: "paragraph", text: "Include:" },
       {

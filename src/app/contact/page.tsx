@@ -20,10 +20,10 @@ const INFO_CARDS = [
     body: "We operate as an email-only support service to ensure all communication is documented and handled efficiently.",
     extra: (
       <a
-        href="mailto:support@peptidesexpress.com.au"
+        href="mailto:Support@defconpeptides.com.au"
         className="mt-3 inline-block text-sm font-medium text-brand hover:underline"
       >
-        support@peptidesexpress.com.au
+        Support@defconpeptides.com.au
       </a>
     ),
   },
