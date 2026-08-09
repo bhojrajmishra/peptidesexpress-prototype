@@ -198,20 +198,18 @@ export function ProductDetail({ product }: { product: Product }) {
       <div className="mt-4 grid gap-10 lg:grid-cols-2">
         {/* Image gallery */}
         <div>
-          <div className="group relative overflow-hidden rounded-3xl bg-gray-50">
-            {/* The image fills the frame so the parent's overflow-hidden clips it
-                to the rounded corners — with object-contain it sits letterboxed
-                inside the box instead and the corners still read as square. */}
-            {/* Squarer than the old 4:5 frame, so the gallery stops towering
-                over the purchase panel on a wide screen. */}
-            <div className="aspect-square w-full">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={mainImage}
-                alt={product.name}
-                className="h-full w-full object-contain"
-              />
-            </div>
+          {/* w-fit so the box hugs the photo. A fixed frame with object-contain
+              letterboxes a non-square image, and then the frame's rounded
+              corners sit away from the picture's own edges, which is what made
+              them read as sharp. Sizing to the image means the radius lands on
+              the picture itself, and nothing is cropped. */}
+          <div className="group relative mx-auto w-fit max-w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={mainImage}
+              alt={product.name}
+              className="block max-h-[30rem] w-auto max-w-full rounded-3xl bg-gray-50"
+            />
 
             {thumbnails.length > 1 && (
               <>
