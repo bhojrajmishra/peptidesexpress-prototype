@@ -54,7 +54,7 @@ function CoaPanel({
 
   return (
     <div className="mt-6">
-      <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 px-4 py-3.5">
+      <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 px-4 py-3.5 transition-colors hover:border-brand">
         <div className="flex items-center gap-3">
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand">
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
