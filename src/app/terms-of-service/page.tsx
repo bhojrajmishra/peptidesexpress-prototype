@@ -81,11 +81,11 @@ const SECTIONS: LegalSection[] = [
       { type: "paragraph", text: "We reserve the right to:" },
       {
         type: "list",
-        items: [
-          "Refuse or cancel orders that appear fraudulent or suspicious",
-          "Limit order quantities",
-          "Verify customer information before processing",
-        ],
+        items: ["Limit order quantities", "Verify customer information before processing"],
+      },
+      {
+        type: "paragraph",
+        text: "We reserve the right to refuse, suspend or cancel any order where we reasonably believe the purchase may involve unlawful activity, misuse of our products, fraud, inaccurate customer information or any breach of these Terms.",
       },
       { type: "paragraph", text: "Once an order is dispatched, it cannot be cancelled." },
     ],
