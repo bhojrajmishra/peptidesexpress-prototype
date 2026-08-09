@@ -38,9 +38,9 @@ export interface CoaDetail {
 export const COA_DETAILS: CoaDetail[] = [
   {
     key: "NAD+|500mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our NAD+ 500mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-CM2I16, Analysis Date 05/08/2026) and confirmed at **99.65% purity**.",
+      "Our NAD+ 500mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-CM2I16, Analysis Date 05/08/2026) and confirmed at **99.65% purity**.",
     sections: [
       {
         heading: "Purity & Quant (HPLC)",
@@ -164,9 +164,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "BPC-157/TB-500|20mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our BPC-157 / TB-500 (Wolverine) 20mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-XBJQZD, Analysis Date 05/08/2026) and confirmed at **99.93% purity**.",
+      "Our BPC-157 / TB-500 (Wolverine) 20mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-XBJQZD, Analysis Date 05/08/2026) and confirmed at **99.93% purity**.",
     sampleInfo: [
       { label: "COA #", value: "COA-2026-XBJQZD" },
       { label: "Lot Number", value: "BB20-05042026" },
@@ -240,9 +240,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "IPAMORELIN|10mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our Ipamorelin 10mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-3-LYBQ, Analysis Date 05/08/2026) and confirmed at **99.97% purity**.",
+      "Our Ipamorelin 10mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-3-LYBQ, Analysis Date 05/08/2026) and confirmed at **99.97% purity**.",
     sampleInfo: [
       { label: "Lot Number", value: "IP10-05042026" },
       { label: "Concentration", value: "10mg" },
@@ -327,9 +327,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "GHK-CU|100mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our GHK-Cu 100mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-BIUPTS, Analysis Date 05/08/2026) and confirmed at **99.48% purity**.",
+      "Our GHK-Cu 100mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-BIUPTS, Analysis Date 05/08/2026) and confirmed at **99.48% purity**.",
     sections: [
       {
         heading: "Purity & Quant (HPLC)",
@@ -350,9 +350,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "GHK-CU|50mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our GHK-Cu 50mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-IGAMNK, Analysis Date 06/27/2026) and confirmed at **99.97% purity**.",
+      "Our GHK-Cu 50mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-IGAMNK, Analysis Date 06/27/2026) and confirmed at **99.97% purity**.",
     sections: [
       {
         heading: "Full QC Panel",
@@ -374,9 +374,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "GLP-3 (RT)|30mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our GLP-3 (RT) 30mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-JSWUY0, Analysis Date 05/08/2026) and confirmed at **99.62% purity**.",
+      "Our GLP-3 (RT) 30mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-JSWUY0, Analysis Date 05/08/2026) and confirmed at **99.62% purity**.",
     sections: [
       {
         heading: "Test Results",
@@ -424,9 +424,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "GLP-3 (RT)|10mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our GLP-3 (RT) 10mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-V-PNHB, Analysis Date 05/08/2026) and confirmed at **98.49% purity**.",
+      "Our GLP-3 (RT) 10mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-V-PNHB, Analysis Date 05/08/2026) and confirmed at **98.49% purity**.",
     sections: [
       {
         heading: "Test Results",
@@ -447,9 +447,9 @@ export const COA_DETAILS: CoaDetail[] = [
   },
   {
     key: "BPC-157|10mg",
-    labLine: "ILS Laboratories | ISO/IEC 17025 Accredited",
+    labLine: "Janoshik Laboratories | ISO/IEC 17025 Accredited",
     summary:
-      "Our BPC-157 10mg has been third-party tested by **ILS Laboratories** (COA # COA-2026-A-227X, Analysis Date 05/29/2026) and confirmed at **99.84% purity**.",
+      "Our BPC-157 10mg has been third-party tested by **Janoshik Laboratories** (COA # COA-2026-A-227X, Analysis Date 05/29/2026) and confirmed at **99.84% purity**.",
     sections: [
       {
         heading: "Full QC Panel Results",

@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Product } from "../types";
 import { useCart } from "@/modules/cart/context/CartContext";
-import { STATIC_CERTIFICATES } from "@/modules/certificates/data/static-certificates";
+import { CoaDetailModal } from "@/modules/certificates/components/CoaDetailModal";
+import { getCoaDetail } from "@/modules/certificates/data/static-coa-details";
 
 const BUNDLES = [
   { label: "Buy One", qty: 1, discount: 0, popular: false },
@@ -30,17 +31,26 @@ function CheckIcon() {
   );
 }
 
+const COA_LAB = "Janoshik Laboratories";
+
 /**
- * Batch-purity strip with a link through to the Certificates of Analysis.
- * The purity figure is taken from this product's own certificate entry where
- * one exists, matched on product name, so the number shown belongs to the
- * product being viewed rather than being a hardcoded claim.
+ * Batch-purity strip that opens this product's Certificate of Analysis in a
+ * modal, rather than navigating away mid-purchase. The CoA is looked up by
+ * product name and the selected dosage, so the panel follows the size the
+ * shopper is actually looking at.
  */
-function CoaPanel({ name, purity }: { name: string; purity?: string | null }) {
-  const cert = STATIC_CERTIFICATES.find(
-    (c) => c.name.toLowerCase() === name.toLowerCase().trim(),
-  );
-  const shown = cert ? (cert.purity.startsWith("≥") ? cert.purity : `≥ ${cert.purity}`) : purity || "≥ 99.0%";
+function CoaPanel({
+  name,
+  dosage,
+  purity,
+}: {
+  name: string;
+  dosage: string;
+  purity?: string | null;
+}) {
+  const [open, setOpen] = useState(false);
+  const shown = purity || "≥ 99.0%";
+  const detail = getCoaDetail(name, dosage || "—", shown, COA_LAB);
 
   return (
     <div className="mt-6">
@@ -64,8 +74,9 @@ function CoaPanel({ name, purity }: { name: string; purity?: string | null }) {
           </div>
         </div>
 
-        <Link
-          href="/certificates-of-analysis"
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
           className="flex shrink-0 items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-ink transition hover:text-brand"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,13 +88,15 @@ function CoaPanel({ name, purity }: { name: string; purity?: string | null }) {
             />
           </svg>
           View CoA
-        </Link>
+        </button>
       </div>
 
       <p className="mt-4 text-center text-xs leading-relaxed">
         <span className="font-semibold text-ink">Not for human or veterinary consumption.</span>{" "}
         <span className="text-muted">For laboratory research purposes only.</span>
       </p>
+
+      {open && <CoaDetailModal productName={name} detail={detail} onClose={() => setOpen(false)} />}
     </div>
   );
 }
@@ -191,12 +204,12 @@ export function ProductDetail({ product }: { product: Product }) {
                 inside the box instead and the corners still read as square. */}
             {/* Squarer than the old 4:5 frame, so the gallery stops towering
                 over the purchase panel on a wide screen. */}
-            <div className="aspect-square w-full">
+            <div className="mx-auto aspect-square w-full max-w-md p-6">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={mainImage}
                 alt={product.name}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
 
@@ -388,7 +401,11 @@ export function ProductDetail({ product }: { product: Product }) {
             )}
           </button>
 
-          <CoaPanel name={product.name} purity={product.purity} />
+          <CoaPanel
+            name={product.name}
+            dosage={product.variants[variantIdx]?.label || "—"}
+            purity={product.purity}
+          />
         </div>
       </div>
 

@@ -66,7 +66,7 @@ export function CoaDetailModal({
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4 pt-10 sm:pt-16">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/50 p-4 pt-10 backdrop-blur-sm sm:pt-16">
       <div className="relative w-full max-w-xl overflow-hidden rounded-2xl bg-white shadow-2xl">
         <button
           onClick={onClose}
