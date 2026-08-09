@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Product } from "../types";
 import { useCart } from "@/modules/cart/context/CartContext";
+import { STATIC_CERTIFICATES } from "@/modules/certificates/data/static-certificates";
 
 const BUNDLES = [
   { label: "Buy One", qty: 1, discount: 0, popular: false },
@@ -11,12 +12,6 @@ const BUNDLES = [
   { label: "Buy Three", qty: 3, discount: 0.15, popular: false },
   { label: "Buy Four", qty: 4, discount: 0.2, popular: false },
   { label: "Ten or More", qty: 10, discount: 0.3, popular: false },
-];
-
-const FEATURES = [
-  "Lyophilised Powder | ≥99% Purity",
-  "Express shipping — Orders before 2pm AEST ship same day",
-  "For laboratory and scientific research purposes only",
 ];
 
 function CartIcon() {
@@ -32,6 +27,64 @@ function CheckIcon() {
     <svg className="mt-0.5 h-4 w-4 shrink-0 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
     </svg>
+  );
+}
+
+/**
+ * Batch-purity strip with a link through to the Certificates of Analysis.
+ * The purity figure is taken from this product's own certificate entry where
+ * one exists, matched on product name, so the number shown belongs to the
+ * product being viewed rather than being a hardcoded claim.
+ */
+function CoaPanel({ name, purity }: { name: string; purity?: string | null }) {
+  const cert = STATIC_CERTIFICATES.find(
+    (c) => c.name.toLowerCase() === name.toLowerCase().trim(),
+  );
+  const shown = cert ? (cert.purity.startsWith("≥") ? cert.purity : `≥ ${cert.purity}`) : purity || "≥ 99.0%";
+
+  return (
+    <div className="mt-6">
+      <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 px-4 py-3.5">
+        <div className="flex items-center gap-3">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-light text-brand">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-.34-.014-.677-.042-1.01z"
+              />
+            </svg>
+          </span>
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">Last batch purity</p>
+            <p className="text-sm font-bold text-ink">
+              {shown} <span className="font-normal text-muted">by HPLC</span>
+            </p>
+          </div>
+        </div>
+
+        <Link
+          href="/certificates-of-analysis"
+          className="flex shrink-0 items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-ink transition hover:text-brand"
+        >
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+          View CoA
+        </Link>
+      </div>
+
+      <p className="mt-4 text-center text-xs leading-relaxed">
+        <span className="font-semibold text-ink">Not for human or veterinary consumption.</span>{" "}
+        <span className="text-muted">For laboratory research purposes only.</span>
+      </p>
+    </div>
   );
 }
 
@@ -136,7 +189,9 @@ export function ProductDetail({ product }: { product: Product }) {
             {/* The image fills the frame so the parent's overflow-hidden clips it
                 to the rounded corners — with object-contain it sits letterboxed
                 inside the box instead and the corners still read as square. */}
-            <div className="aspect-[4/5] w-full">
+            {/* Squarer than the old 4:5 frame, so the gallery stops towering
+                over the purchase panel on a wide screen. */}
+            <div className="aspect-square w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={mainImage}
@@ -333,15 +388,7 @@ export function ProductDetail({ product }: { product: Product }) {
             )}
           </button>
 
-          {/* Feature list */}
-          <ul className="mt-6 space-y-2">
-            {FEATURES.map((f) => (
-              <li key={f} className="flex items-start gap-2 text-sm text-muted">
-                <CheckIcon />
-                {f}
-              </li>
-            ))}
-          </ul>
+          <CoaPanel name={product.name} purity={product.purity} />
         </div>
       </div>
 
