@@ -71,13 +71,14 @@ export function AgeVerificationGate() {
 
         <div className="mt-7 space-y-3">
           <Confirmation checked={isAdult} onChange={setIsAdult}>
-            I am at least <strong className="font-semibold text-ink">18 years of age</strong>.
+            I confirm that I am <strong className="font-semibold text-ink">18 years of age or older</strong>.
           </Confirmation>
 
           <Confirmation checked={isResearcher} onChange={setIsResearcher}>
-            I confirm I am a <strong className="font-semibold text-ink">qualified researcher</strong> purchasing
-            for <strong className="font-semibold text-ink">in-vitro / laboratory research</strong> only — not for
-            human or veterinary use.
+            I acknowledge that all products are sold strictly for{" "}
+            <strong className="font-semibold text-ink">in vitro laboratory research purposes only</strong>. I
+            understand they are not for human or veterinary use or consumption, and I agree to comply with all
+            applicable laws and these Terms.
           </Confirmation>
         </div>
 
