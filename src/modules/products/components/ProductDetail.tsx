@@ -208,7 +208,7 @@ export function ProductDetail({ product }: { product: Product }) {
             <img
               src={mainImage}
               alt={product.name}
-              className="block max-h-[30rem] w-auto max-w-full rounded-3xl bg-gray-50"
+              className="block max-h-[36rem] w-auto max-w-full rounded-3xl bg-gray-50"
             />
 
             {thumbnails.length > 1 && (
