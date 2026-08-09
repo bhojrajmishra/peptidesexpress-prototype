@@ -204,7 +204,7 @@ export function ProductDetail({ product }: { product: Product }) {
                 inside the box instead and the corners still read as square. */}
             {/* Squarer than the old 4:5 frame, so the gallery stops towering
                 over the purchase panel on a wide screen. */}
-            <div className="mx-auto aspect-square w-full max-w-md p-6">
+            <div className="aspect-square w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={mainImage}
