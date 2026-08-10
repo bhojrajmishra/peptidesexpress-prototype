@@ -15,10 +15,6 @@ const SECTIONS: LegalSection[] = [
       },
       {
         type: "paragraph",
-        text: "We do not ship internationally. Any international order placed will be cancelled and refunded.",
-      },
-      {
-        type: "paragraph",
         text: "We do not deliver to parcel lockers or PO boxes where the carrier requires a signature on delivery.",
       },
     ],
@@ -46,24 +42,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "3. Shipping Rates",
-    blocks: [
-      { type: "paragraph", text: "All rates are in Australian dollars (AUD) and include express shipping:" },
-      {
-        type: "list",
-        items: [
-          "Orders of $200 or more — free express shipping",
-          "Orders under $200 — $15 flat rate express shipping",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: "The shipping charge applying to your order is shown at checkout before payment is confirmed.",
-      },
-    ],
-  },
-  {
-    heading: "4. Delivery Timeframes",
+    heading: "3. Delivery Timeframes",
     blocks: [
       {
         type: "paragraph",
@@ -76,7 +55,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "5. Tracking",
+    heading: "4. Tracking",
     blocks: [
       {
         type: "paragraph",
@@ -89,7 +68,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "6. Delivery Address",
+    heading: "5. Delivery Address",
     blocks: [
       {
         type: "paragraph",
@@ -102,7 +81,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "7. Risk and Title",
+    heading: "6. Risk and Title",
     blocks: [
       {
         type: "paragraph",
@@ -115,7 +94,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "8. Delays Outside Our Control",
+    heading: "7. Delays Outside Our Control",
     blocks: [
       {
         type: "paragraph",
@@ -133,7 +112,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "9. Lost, Damaged or Incorrect Deliveries",
+    heading: "8. Lost, Damaged or Incorrect Deliveries",
     blocks: [
       {
         type: "paragraph",
@@ -150,7 +129,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "10. Storage on Arrival",
+    heading: "9. Storage on Arrival",
     blocks: [
       {
         type: "paragraph",
@@ -159,7 +138,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "11. Research Use Only",
+    heading: "10. Research Use Only",
     blocks: [
       {
         type: "paragraph",
@@ -168,7 +147,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "12. Australian Consumer Law",
+    heading: "11. Australian Consumer Law",
     blocks: [
       {
         type: "paragraph",
@@ -177,7 +156,7 @@ const SECTIONS: LegalSection[] = [
     ],
   },
   {
-    heading: "13. Contact",
+    heading: "12. Contact",
     blocks: [
       { type: "paragraph", text: "For any question about a delivery, contact us:" },
       { type: "paragraph", text: "Defcon Peptides" },

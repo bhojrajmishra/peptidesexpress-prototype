@@ -230,7 +230,7 @@ export default function CheckoutPage() {
       {/* Header */}
       <header className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
         <Link href="/" className="font-display text-xl font-extrabold tracking-tight text-brand">
-          PEPTIDES<span className="text-ink">EXPRESS</span>
+          DEFCON<span className="text-ink"> PEPTIDES</span>
         </Link>
         <Link href="/cart" className="flex items-center gap-1.5 text-sm text-muted hover:text-ink transition">
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
